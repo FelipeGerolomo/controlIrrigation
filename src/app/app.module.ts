@@ -11,6 +11,8 @@ import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { DadosEntradaPage } from '../pages/dados-entrada/dados-entrada';
+import { DataLocal } from '../models/data_local';
 
 
 
@@ -18,6 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
+    DadosEntradaPage
   ],
   imports: [
     BrowserModule,
@@ -27,12 +30,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
+    DadosEntradaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     LocalNotifications,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
 })
 export class AppModule { }
