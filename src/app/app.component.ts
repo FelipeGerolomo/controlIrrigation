@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { DadosEntradaPage } from '../pages/dados-entrada/dados-entrada';
+import { MeteorologiaPage } from '../pages/meteorologia/meteorologia';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { DadosEntradaPage } from '../pages/dados-entrada/dados-entrada';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = DadosEntradaPage;
+  rootPage: any = MeteorologiaPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -24,6 +25,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Dados de Entrada', component: DadosEntradaPage },
+      { title: 'Dados de Meteorológicos', component: MeteorologiaPage },
     ];
 
   }

@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DadosEntradaPage } from '../pages/dados-entrada/dados-entrada';
 import { DataLocal } from '../models/data_local';
+import { MeteorologiaPage } from '../pages/meteorologia/meteorologia';
 
 
 
@@ -20,7 +21,8 @@ import { DataLocal } from '../models/data_local';
   declarations: [
     MyApp,
     HomePage,
-    DadosEntradaPage
+    DadosEntradaPage,
+    MeteorologiaPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { DataLocal } from '../models/data_local';
   entryComponents: [
     MyApp,
     HomePage,
-    DadosEntradaPage
+    DadosEntradaPage,
+    MeteorologiaPage
   ],
   providers: [
     StatusBar,
