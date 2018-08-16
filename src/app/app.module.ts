@@ -12,8 +12,9 @@ import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DadosEntradaPage } from '../pages/dados-entrada/dados-entrada';
-import { DataLocal } from '../models/data_local';
 import { MeteorologiaPage } from '../pages/meteorologia/meteorologia';
+import { MainProvider } from '../providers/main/main';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -27,19 +28,21 @@ import { MeteorologiaPage } from '../pages/meteorologia/meteorologia';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     DadosEntradaPage,
-    MeteorologiaPage
+    MeteorologiaPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     LocalNotifications,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    MainProvider,
   ]
 })
 export class AppModule { }

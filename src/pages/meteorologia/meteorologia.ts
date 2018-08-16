@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MainProvider } from '../../providers/main/main';
+import { ParametrosMeteorologicos } from '../../models/parametros_meteorologicos';
 
 /**
  * Generated class for the MeteorologiaPage page.
@@ -14,8 +16,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'meteorologia.html',
 })
 export class MeteorologiaPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  dados: ParametrosMeteorologicos = new ParametrosMeteorologicos();
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, private mainProvider: MainProvider) {
   }
 
   ionViewDidLoad() {

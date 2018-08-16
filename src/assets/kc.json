@@ -1,0 +1,370 @@
+[
+    {
+        "Cultura": "Alfafa",
+        "ESTAG1": 0.4,
+        "ESTAG2": 0.4,
+        "ESTAG3": 0.4,
+        "ESTAG4": 0.4,
+        "ID": 1
+    },
+    {
+        "Cultura": "Algodão",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.25,
+        "ESTAG4": 0.9,
+        "ID": 2
+    },
+    {
+        "Cultura": "Amendoin",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.1,
+        "ESTAG4": 0.85,
+        "ID": 3
+    },
+    {
+        "Cultura": "Arroz",
+        "ESTAG1": 1.15,
+        "ESTAG2": 1.5,
+        "ESTAG3": 1.3,
+        "ESTAG4": 1.05,
+        "ID": 4
+    },
+    {
+        "Cultura": "Banana Tropical ",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.85,
+        "ESTAG3": 1.1,
+        "ESTAG4": 1,
+        "ID": 5
+    },
+    {
+        "Cultura": "Banana Subtropical",
+        "ESTAG1": 0.65,
+        "ESTAG2": 0.9,
+        "ESTAG3": 1.2,
+        "ESTAG4": 1.15,
+        "ID": 6
+    },
+    {
+        "Cultura": "Batata",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.2,
+        "ESTAG4": 0.95,
+        "ID": 7
+    },
+    {
+        "Cultura": "Beterraba açucareira",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.85,
+        "ESTAG3": 1.2,
+        "ESTAG4": 1,
+        "ID": 8
+    },
+    {
+        "Cultura": "Cana de Açucar",
+        "ESTAG1": 0.5,
+        "ESTAG2": 1,
+        "ESTAG3": 1.3,
+        "ESTAG4": 0.8,
+        "ID": 9
+    },
+    {
+        "Cultura": "Cártamo",
+        "ESTAG1": 0.4,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.2,
+        "ESTAG4": 0.7,
+        "ID": 10
+    },
+    {
+        "Cultura": "Cebola Seca",
+        "ESTAG1": 0.6,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.2,
+        "ESTAG4": 0.7,
+        "ID": 11
+    },
+    {
+        "Cultura": "Cebola Verde",
+        "ESTAG1": 0.6,
+        "ESTAG2": 0.75,
+        "ESTAG3": 1.05,
+        "ESTAG4": 1.05,
+        "ID": 12
+    },
+    {
+        "Cultura": "Citros",
+        "ESTAG1": 0.75,
+        "ESTAG2": 0.75,
+        "ESTAG3": 0.75,
+        "ESTAG4": 0.75,
+        "ID": 13
+    },
+    {
+        "Cultura": "Ervilha Verde",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.85,
+        "ESTAG3": 1.2,
+        "ESTAG4": 1.15,
+        "ID": 14
+    },
+    {
+        "Cultura": "Feijão Verde",
+        "ESTAG1": 0.4,
+        "ESTAG2": 0.75,
+        "ESTAG3": 1.05,
+        "ESTAG4": 0.95,
+        "ID": 15
+    },
+    {
+        "Cultura": "Feijão Seco",
+        "ESTAG1": 0.4,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.2,
+        "ESTAG4": 0.75,
+        "ID": 16
+    },
+    {
+        "Cultura": "Girassol",
+        "ESTAG1": 0.4,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.2,
+        "ESTAG4": 0.8,
+        "ID": 17
+    },
+    {
+        "Cultura": "Melancia",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.05,
+        "ESTAG4": 0.9,
+        "ID": 18
+    },
+    {
+        "Cultura": "Milho Doce",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.9,
+        "ESTAG3": 1.2,
+        "ESTAG4": 1.15,
+        "ID": 19
+    },
+    {
+        "Cultura": "Milho Grão",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.85,
+        "ESTAG3": 1.2,
+        "ESTAG4": 0.95,
+        "ID": 20
+    },
+    {
+        "Cultura": "Oliveira",
+        "ESTAG1": 0.6,
+        "ESTAG2": 0.6,
+        "ESTAG3": 0.6,
+        "ESTAG4": 0.6,
+        "ID": 21
+    },
+    {
+        "Cultura": "Pimentão Verde",
+        "ESTAG1": 0.4,
+        "ESTAG2": 0.75,
+        "ESTAG3": 1.1,
+        "ESTAG4": 1,
+        "ID": 22
+    },
+    {
+        "Cultura": "Repolho",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.1,
+        "ESTAG4": 1,
+        "ID": 23
+    },
+    {
+        "Cultura": "Soja",
+        "ESTAG1": 0.4,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.15,
+        "ESTAG4": 0.8,
+        "ID": 24
+    },
+    {
+        "Cultura": "Sorgo",
+        "ESTAG1": 0.4,
+        "ESTAG2": 0.75,
+        "ESTAG3": 1.15,
+        "ESTAG4": 0.8,
+        "ID": 25
+    },
+    {
+        "Cultura": "Tabaco",
+        "ESTAG1": 0.4,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.2,
+        "ESTAG4": 1,
+        "ID": 26
+    },
+    {
+        "Cultura": "Tomate",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.25,
+        "ESTAG4": 0.95,
+        "ID": 27
+    },
+    {
+        "Cultura": "Trigo",
+        "ESTAG1": 0.4,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.2,
+        "ESTAG4": 0.75,
+        "ID": 28
+    },
+    {
+        "Cultura": "Uva",
+        "ESTAG1": 0.55,
+        "ESTAG2": 0.8,
+        "ESTAG3": 0.9,
+        "ESTAG4": 0.8,
+        "ID": 29
+    },
+    {
+        "Cultura": "Abóbora",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.75,
+        "ESTAG3": 1,
+        "ESTAG4": 0.8,
+        "ID": 30
+    },
+    {
+        "Cultura": "Aipo",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.85,
+        "ESTAG3": 1.15,
+        "ESTAG4": 1.05,
+        "ID": 31
+    },
+    {
+        "Cultura": "Alcachofra",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.75,
+        "ESTAG3": 1.05,
+        "ESTAG4": 1,
+        "ID": 32
+    },
+    {
+        "Cultura": "Alface",
+        "ESTAG1": 0.6,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.05,
+        "ESTAG4": 1,
+        "ID": 33
+    },
+    {
+        "Cultura": "Berinjela",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.1,
+        "ESTAG4": 0.9,
+        "ID": 34
+    },
+    {
+        "Cultura": "Brássicas",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.85,
+        "ESTAG3": 1.1,
+        "ESTAG4": 0.95,
+        "ID": 35
+    },
+    {
+        "Cultura": "Cenoura",
+        "ESTAG1": 0.6,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.15,
+        "ESTAG4": 0.85,
+        "ID": 36
+    },
+    {
+        "Cultura": "Esrvilha Seca",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.85,
+        "ESTAG3": 1.2,
+        "ESTAG4": 0.3,
+        "ID": 37
+    },
+    {
+        "Cultura": "Espinafre",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.85,
+        "ESTAG3": 1.05,
+        "ESTAG4": 1,
+        "ID": 38
+    },
+    {
+        "Cultura": "Lentilha",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.85,
+        "ESTAG3": 1.15,
+        "ESTAG4": 0.3,
+        "ID": 39
+    },
+    {
+        "Cultura": "Melão",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.05,
+        "ESTAG4": 0.7,
+        "ID": 40
+    },
+    {
+        "Cultura": "Pepino",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.75,
+        "ESTAG3": 1,
+        "ESTAG4": 0.8,
+        "ID": 41
+    },
+    {
+        "Cultura": "Rabanete",
+        "ESTAG1": 0.6,
+        "ESTAG2": 0.65,
+        "ESTAG3": 0.9,
+        "ESTAG4": 0.85,
+        "ID": 42
+    },
+    {
+        "Cultura": "Tomate",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.8,
+        "ESTAG3": 1.25,
+        "ESTAG4": 0.65,
+        "ID": 43
+    },
+    {
+        "Cultura": "Tomate industrial",
+        "ESTAG1": 0.6,
+        "ESTAG2": 0.65,
+        "ESTAG3": 0.85,
+        "ESTAG4": 0.65,
+        "ID": 44
+    },
+    {
+        "Cultura": "Vagem",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.75,
+        "ESTAG3": 1.05,
+        "ESTAG4": 0.9,
+        "ID": 45
+    },
+    {
+        "Cultura": "Abacaxi",
+        "ESTAG1": 0.5,
+        "ESTAG2": 0.7,
+        "ESTAG3": 0.7,
+        "ESTAG4": 0.5,
+        "ID": 46
+    }
+]

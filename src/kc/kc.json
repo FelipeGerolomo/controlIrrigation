@@ -1,0 +1,368 @@
+{
+    "Alfafa": [
+        {
+            "ESTAG1": "0.4",
+            "ESTAG2": "0.4",
+            "ESTAG3": "0.4",
+            "ESTAG4": "0.4"
+        }
+    ],
+    "Algodão": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.25",
+            "ESTAG4": "0.9"
+        }
+    ],
+    "Amendoin": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.1",
+            "ESTAG4": "0.85"
+        }
+    ],
+    "Arroz": [
+        {
+            "ESTAG1": "1.15",
+            "ESTAG2": "1.5",
+            "ESTAG3": "1.3",
+            "ESTAG4": "1.05"
+        }
+    ],
+    "Banana Tropical ": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.85",
+            "ESTAG3": "1.1",
+            "ESTAG4": "1"
+        }
+    ],
+    "Banana Subtropical": [
+        {
+            "ESTAG1": "0.65",
+            "ESTAG2": "0.9",
+            "ESTAG3": "1.2",
+            "ESTAG4": "1.15"
+        }
+    ],
+    "Batata": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.2",
+            "ESTAG4": "0.95"
+        }
+    ],
+    "Beterraba açucareira": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.85",
+            "ESTAG3": "1.2",
+            "ESTAG4": "1"
+        }
+    ],
+    "Cana de Açucar": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "1",
+            "ESTAG3": "1.3",
+            "ESTAG4": "0.8"
+        }
+    ],
+    "Cártamo": [
+        {
+            "ESTAG1": "0.4",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.2",
+            "ESTAG4": "0.7"
+        }
+    ],
+    "Cebola Seca": [
+        {
+            "ESTAG1": "0.6",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.2",
+            "ESTAG4": "0.7"
+        }
+    ],
+    "Cebola Verde": [
+        {
+            "ESTAG1": "0.6",
+            "ESTAG2": "0.75",
+            "ESTAG3": "1.05",
+            "ESTAG4": "1.05"
+        }
+    ],
+    "Citros": [
+        {
+            "ESTAG1": "0.75",
+            "ESTAG2": "0.75",
+            "ESTAG3": "0.75",
+            "ESTAG4": "0.75"
+        }
+    ],
+    "Ervilha Verde": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.85",
+            "ESTAG3": "1.2",
+            "ESTAG4": "1.15"
+        }
+    ],
+    "Feijão Verde": [
+        {
+            "ESTAG1": "0.4",
+            "ESTAG2": "0.75",
+            "ESTAG3": "1.05",
+            "ESTAG4": "0.95"
+        }
+    ],
+    "Feijão Seco": [
+        {
+            "ESTAG1": "0.4",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.2",
+            "ESTAG4": "0.75"
+        }
+    ],
+    "Girassol": [
+        {
+            "ESTAG1": "0.4",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.2",
+            "ESTAG4": "0.8"
+        }
+    ],
+    "Melancia": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.05",
+            "ESTAG4": "0.9"
+        }
+    ],
+    "Milho Doce": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.9",
+            "ESTAG3": "1.2",
+            "ESTAG4": "1.15"
+        }
+    ],
+    "Milho Grão": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.85",
+            "ESTAG3": "1.2",
+            "ESTAG4": "0.95"
+        }
+    ],
+    "Oliveira": [
+        {
+            "ESTAG1": "0.6",
+            "ESTAG2": "0.6",
+            "ESTAG3": "0.6",
+            "ESTAG4": "0.6"
+        }
+    ],
+    "Pimentão Verde": [
+        {
+            "ESTAG1": "0.4",
+            "ESTAG2": "0.75",
+            "ESTAG3": "1.1",
+            "ESTAG4": "1"
+        }
+    ],
+    "Repolho": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.1",
+            "ESTAG4": "1"
+        }
+    ],
+    "Soja": [
+        {
+            "ESTAG1": "0.4",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.15",
+            "ESTAG4": "0.8"
+        }
+    ],
+    "Sorgo": [
+        {
+            "ESTAG1": "0.4",
+            "ESTAG2": "0.75",
+            "ESTAG3": "1.15",
+            "ESTAG4": "0.8"
+        }
+    ],
+    "Tabaco": [
+        {
+            "ESTAG1": "0.4",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.2",
+            "ESTAG4": "1"
+        }
+    ],
+    "Tomate": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.25",
+            "ESTAG4": "0.95"
+        },
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.25",
+            "ESTAG4": "0.65"
+        }
+    ],
+    "Trigo": [
+        {
+            "ESTAG1": "0.4",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.2",
+            "ESTAG4": "0.75"
+        }
+    ],
+    "Uva": [
+        {
+            "ESTAG1": "0.55",
+            "ESTAG2": "0.8",
+            "ESTAG3": "0.9",
+            "ESTAG4": "0.8"
+        }
+    ],
+    "Abóbora": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.75",
+            "ESTAG3": "1",
+            "ESTAG4": "0.8"
+        }
+    ],
+    "Aipo": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.85",
+            "ESTAG3": "1.15",
+            "ESTAG4": "1.05"
+        }
+    ],
+    "Alcachofra": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.75",
+            "ESTAG3": "1.05",
+            "ESTAG4": "1"
+        }
+    ],
+    "Alface": [
+        {
+            "ESTAG1": "0.6",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.05",
+            "ESTAG4": "1"
+        }
+    ],
+    "Berinjela": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.1",
+            "ESTAG4": "0.9"
+        }
+    ],
+    "Brássicas": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.85",
+            "ESTAG3": "1.1",
+            "ESTAG4": "0.95"
+        }
+    ],
+    "Cenoura": [
+        {
+            "ESTAG1": "0.6",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.15",
+            "ESTAG4": "0.85"
+        }
+    ],
+    "Esrvilha Seca": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.85",
+            "ESTAG3": "1.2",
+            "ESTAG4": "0.3"
+        }
+    ],
+    "Espinafre": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.85",
+            "ESTAG3": "1.05",
+            "ESTAG4": "1"
+        }
+    ],
+    "Lentilha": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.85",
+            "ESTAG3": "1.15",
+            "ESTAG4": "0.3"
+        }
+    ],
+    "Melão": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.8",
+            "ESTAG3": "1.05",
+            "ESTAG4": "0.7"
+        }
+    ],
+    "Pepino": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.75",
+            "ESTAG3": "1",
+            "ESTAG4": "0.8"
+        }
+    ],
+    "Rabanete": [
+        {
+            "ESTAG1": "0.6",
+            "ESTAG2": "0.65",
+            "ESTAG3": "0.9",
+            "ESTAG4": "0.85"
+        }
+    ],
+    "Tomate industrial": [
+        {
+            "ESTAG1": "0.6",
+            "ESTAG2": "0.65",
+            "ESTAG3": "0.85",
+            "ESTAG4": "0.65"
+        }
+    ],
+    "Vagem": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.75",
+            "ESTAG3": "1.05",
+            "ESTAG4": "0.9"
+        }
+    ],
+    "Abacaxi": [
+        {
+            "ESTAG1": "0.5",
+            "ESTAG2": "0.7",
+            "ESTAG3": "0.7",
+            "ESTAG4": "0.5"
+        }
+    ]
+}

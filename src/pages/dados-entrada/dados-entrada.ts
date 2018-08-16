@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DataLocal } from '../../models/data_local';
+import { MainProvider } from '../../providers/main/main';
 
 @IonicPage()
 @Component({
@@ -9,13 +10,21 @@ import { DataLocal } from '../../models/data_local';
 })
 export class DadosEntradaPage {
   dadosEntrada: DataLocal = new DataLocal();
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  listKC: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public mainProvider: MainProvider) {
+    setTimeout(() => {
+      this.getKC();
+    }, 500);
   }
 
   save() {
-    console.log(this.dadosEntrada)
+    this.mainProvider.dadosEntrada = this.dadosEntrada;
+    console.log(this.mainProvider.dadosEntrada)
+  }
+
+  getKC() {
+    this.listKC = this.mainProvider.kc;
+    console.log(this.listKC)
   }
 
   onSetAltitude(value: string) {

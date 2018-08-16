@@ -14,27 +14,27 @@
       <ion-list>
         <ion-item>
           <h2>Temperatura Média.</h2>
-          <h2 item-end>25,4</h2>
+          <h2 item-end>{{dados.temp_avg}}</h2>
         </ion-item>
         <ion-item>
           <h2>Temperatura Máxima</h2>
-          <h2 item-end>30,2</h2>
+          <h2 item-end>{{dados.temp_max}}</h2>
         </ion-item>
         <ion-item>
           <h2>Temperatura Mínima</h2>
-          <h2 item-end>21,1</h2>
+          <h2 item-end>{{dados.temp_min}}</h2>
         </ion-item>
         <ion-item>
           <h2>Precipitação</h2>
-          <h2 item-end>153 mm</h2>
+          <h2 item-end>{{dados.precipitation}} mm</h2>
         </ion-item>
         <ion-item>
-          <h2>Umidade Realtiva</h2>
-          <h2 item-end>78,19</h2>
+          <h2>Umidade Relativa</h2>
+          <h2 item-end>{{dados.humidity}}</h2>
         </ion-item>
         <ion-item>
           <h2>Velocidade do Vento</h2>
-          <h2 item-end>2,65</h2>
+          <h2 item-end>{{dados.wind}}</h2>
         </ion-item>
       </ion-list>
     </ion-card-content>

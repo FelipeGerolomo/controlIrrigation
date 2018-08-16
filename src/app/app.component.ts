@@ -14,7 +14,7 @@ import { MeteorologiaPage } from '../pages/meteorologia/meteorologia';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = MeteorologiaPage;
+  rootPage: any = DadosEntradaPage;
 
   pages: Array<{title: string, component: any}>;
 
