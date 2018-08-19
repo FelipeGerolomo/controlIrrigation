@@ -1,0 +1,9 @@
+- Digitar o nome da cidade se n pegar o GPS/Latitude;
+- Com o dado da cidade, get no tempo;
+- Abre o app, coloca os dados, cultura -> localizacao - > 
+- Altitude usar API (N pode ser input)
+- Albedo é um dado fixo, n colocar nos inputs
+- Pegar todos os dados da temperatura pela API
+- Input da area plantada Hectare/MetroQuadrado
+- Dia Juliano get pela rede movel ou input manual;
+- 

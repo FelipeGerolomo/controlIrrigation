@@ -24,7 +24,7 @@ export class DadosEntradaPage {
 
   getKC() {
     this.listKC = this.mainProvider.kc;
-    console.log(this.listKC)
+    // console.log(this.listKC)
   }
 
   onSetAltitude(value: string) {

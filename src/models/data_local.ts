@@ -1,19 +1,15 @@
 
 export class DataLocal {
     local: String;
-    latitude: number;
-    altitude: number;
-    albedo: number;
+    latitude: number = -0.39;
+    altitude: number = 30.00;
+    albedo: number = 0.23;
     patm: number;
     constante_psicometrica: number;
-    coeficienteCultura: number;
+    coeficienteCultura: number = 1.2;
 
     constructor() {
-
-    }
-
-    teste() {
-        console.log("oi")
+        this.calcPatm();
     }
 
     calcPatm() {

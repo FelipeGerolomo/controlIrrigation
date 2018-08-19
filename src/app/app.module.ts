@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { LocalNotifications } from "@ionic-native/local-notifications";
-
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -41,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     LocalNotifications,
+    Geolocation,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     MainProvider,
   ]

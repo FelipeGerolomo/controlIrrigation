@@ -1,12 +1,13 @@
 
-export class CalculoRadiacaoSolarLiquida {
-    diasJuliano: Number;
-    distanciaSolLua: Number;
-    declividadeSolar: Number;
-    anguloNascerSol: Number;
-    radiacaoSolarTop: Number;
-    radiacaoSolarSup: Number;
-    radiacaoSolarLiquida: Number;
+export class RadiacaoSolarLiquida {
+    diasJuliano: number = 1;
+    distanciaSolLua: number;
+    declividadeSolar: number;
+    anguloNascerSol: number;
+    radiacaoSolarTop: number;
+    radiacaoSolarSup: number;
+    radiacaoSolarLiquida: number;
+    x: number;
 
     constructor() {}
 
