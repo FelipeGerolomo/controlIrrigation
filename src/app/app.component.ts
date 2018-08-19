@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { DadosEntradaPage } from '../pages/dados-entrada/dados-entrada';
 import { MeteorologiaPage } from '../pages/meteorologia/meteorologia';
+import { GeolocationPage } from '../pages/geolocation/geolocation';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { MeteorologiaPage } from '../pages/meteorologia/meteorologia';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = DadosEntradaPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -26,6 +27,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Dados de Entrada', component: DadosEntradaPage },
       { title: 'Dados de Meteorológicos', component: MeteorologiaPage },
+      { title: 'Geolocation', component: GeolocationPage },
     ];
 
   }

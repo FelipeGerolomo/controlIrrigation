@@ -4,6 +4,8 @@ import { DataLocal } from '../../models/data_local';
 import { RadiacaoSolarLiquida } from '../../models/calc_radiacao_solar_liquida';
 import { ParametrosMeteorologicos } from '../../models/parametros_meteorologicos';
 import { Evapotranspiracao } from '../../models/evapotranspiracao';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Coordinates } from '../../models/coordinates';
 
 /*
   Generated class for the MainProvider provider.
@@ -13,15 +15,51 @@ import { Evapotranspiracao } from '../../models/evapotranspiracao';
 */
 @Injectable()
 export class MainProvider {
+  
   dadosEntrada: DataLocal = new DataLocal();
   radiacao_solar: RadiacaoSolarLiquida = new RadiacaoSolarLiquida();
   meteorologia: ParametrosMeteorologicos = new ParametrosMeteorologicos();
   evapotranspiracao: Evapotranspiracao = new Evapotranspiracao();
+  coordinates: Coordinates = new Coordinates();
   kc: any;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private geolocation: Geolocation) {
     this.getCoefCultura();
     this.getDistanciaSolLua();
+    this.getGeolocation();
+  }
+
+  getGeolocation() {
+    var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: false };
+    this.geolocation.getCurrentPosition(options).then((resp) => {
+      this.coordinates.setValues(resp.coords.latitude, resp.coords.longitude, resp.coords.altitude)
+      this.getCurrentWeather();
+      console.log(this.coordinates)
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+  }
+
+  getCurrentWeather() {
+    this.http.get("http://api.openweathermap.org/data/2.5/weather?lat=" + this.coordinates.latitude + "&lon=" + this.coordinates.longitude + "&appid=99b3f54b15ebb716b7b4d13714dfcb57")
+      .subscribe(
+        (data) => {
+        this.meteorologia.setValues(
+          data['name']+", "+data['sys'].country,
+          data['main'].temp,
+          data['main'].temp_max,
+          data['main'].temp_min,
+          0,
+          data['main'].humidity,
+          data['wind'].speed
+        )
+        console.log(data)
+        console.log(this.meteorologia)
+      },
+      (error) => {
+        console.log('Error getting weather', error);
+      }
+    )
   }
 
   getCoefCultura() {
@@ -154,5 +192,5 @@ export class MainProvider {
     console.log(this.evapotranspiracao);
     console.log(this.radiacao_solar)
   }
-  
+
 }

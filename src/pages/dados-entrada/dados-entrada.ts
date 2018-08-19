@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DataLocal } from '../../models/data_local';
 import { MainProvider } from '../../providers/main/main';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @IonicPage()
 @Component({
@@ -11,10 +12,30 @@ import { MainProvider } from '../../providers/main/main';
 export class DadosEntradaPage {
   dadosEntrada: DataLocal = new DataLocal();
   listKC: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mainProvider: MainProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public mainProvider: MainProvider,
+    private geolocation: Geolocation
+  ) {
     setTimeout(() => {
       this.getKC();
     }, 500);
+
+
+  }
+
+  getGeolocation() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      console.log(resp.coords)
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+
+    let watch = this.geolocation.watchPosition();
+    watch.subscribe((data) => {
+      console.log(data.coords)
+    });
   }
 
   save() {

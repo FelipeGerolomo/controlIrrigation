@@ -15,6 +15,7 @@ import { DadosEntradaPage } from '../pages/dados-entrada/dados-entrada';
 import { MeteorologiaPage } from '../pages/meteorologia/meteorologia';
 import { MainProvider } from '../providers/main/main';
 import { HttpClientModule } from '@angular/common/http';
+import { GeolocationPage } from '../pages/geolocation/geolocation';
 
 
 
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     HomePage,
     DadosEntradaPage,
-    MeteorologiaPage
+    MeteorologiaPage,
+    GeolocationPage
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomePage,
     DadosEntradaPage,
     MeteorologiaPage,
+    GeolocationPage
   ],
   providers: [
     StatusBar,

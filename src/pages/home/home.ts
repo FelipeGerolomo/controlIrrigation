@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DataLocal } from '../../models/data_local';
+import { MainProvider } from '../../providers/main/main';
 
 @Component({
   selector: 'page-home',
@@ -8,8 +9,11 @@ import { DataLocal } from '../../models/data_local';
 })
 export class HomePage {
   teste: DataLocal = new DataLocal();
-  constructor(public navCtrl: NavController) {
-    console.log(this.teste)
+  constructor(
+    public navCtrl: NavController,
+    public mainProvider: MainProvider,
+  ) {
+    
   }
 
 }

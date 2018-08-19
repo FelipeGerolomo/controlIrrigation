@@ -1,0 +1,55 @@
+<!--
+  Generated template for the GeolocationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Geolocation</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <h2>Accuracy</h2>
+          <h2 item-end>{{this.coordinates.accuracy}}</h2>
+        </ion-item>
+        <ion-item>
+          <h2>Altitude</h2>
+          <h2 item-end>{{this.coordinates.altitude}}</h2>
+        </ion-item>
+        <ion-item>
+          <h2>Altitude Accuracy</h2>
+          <h2 item-end>{{this.coordinates.altitudeAccuracy}}</h2>
+        </ion-item>
+        <ion-item>
+          <h2>Heading</h2>
+          <h2 item-end>{{this.coordinates.heading}}</h2>
+        </ion-item>
+        <ion-item>
+          <h2>Latitude</h2>
+          <h2 item-end>{{this.coordinates.latitude}}</h2>
+        </ion-item>
+        <ion-item>
+          <h2>Longitude</h2>
+          <h2 item-end>{{this.coordinates.longitude}}</h2>
+        </ion-item>
+        <ion-item>
+          <h2>Speed</h2>
+          <h2 item-end>{{this.coordinates.altitudeAccuracy}}</h2>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="btns">
+    <button (click)="getGeolocation()" ion-button block>Geolocation</button>
+  </div>

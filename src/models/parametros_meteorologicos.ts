@@ -7,18 +7,24 @@ export class ParametrosMeteorologicos {
     precipitation: number;
     humidity: number;
     wind: number;
+    location: String;
 
     constructor() {
-        this.setValues();
+        // this.setValues();
     }
 
-    setValues() {
-        this.temp_avg = 25.4;
-        this.temp_max = 30.2;
-        this.temp_min = 21.1;
-        this.precipitation = 153;
-        this.humidity = 78.19;
-        this.wind = 2.65;
+    setValues(location, temp_avg, temp_max, temp_min, precipitation, humidity, wind) {
+        this.location = location;
+        this.temp_avg = this.kelvinToCelsius(temp_avg);
+        this.temp_max = this.kelvinToCelsius(temp_max);
+        this.temp_min = this.kelvinToCelsius(temp_min);
+        this.precipitation = precipitation;
+        this.humidity = humidity;
+        this.wind = wind;
+    }
+
+    kelvinToCelsius(kelvin) {
+        return  kelvin - 273.15;
     }
 
 }
