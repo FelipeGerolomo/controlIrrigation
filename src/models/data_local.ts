@@ -3,7 +3,7 @@ export class DataLocal {
     local: String;
     latitude: number = -0.39;
     altitude: number = 30.00;
-    albedo: number = 0.23;
+    albedo: number = 0.23; //dado fixo
     patm: number;
     constante_psicometrica: number;
     coeficienteCultura: number = 1.2;

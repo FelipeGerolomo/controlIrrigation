@@ -15,7 +15,7 @@ import { GeolocationPage } from '../pages/geolocation/geolocation';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = DadosEntradaPage;
 
   pages: Array<{title: string, component: any}>;
 

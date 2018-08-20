@@ -7,7 +7,38 @@
   </ion-navbar>
 </ion-header>
 
+
 <ion-content>
+  <ion-card>
+    <ion-card-content class="card-validation">
+      <ion-list>
+        <ion-item>
+          <ion-spinner item-start *ngIf="!isGPS" ></ion-spinner>
+          <ion-icon class="status-icon" name="checkmark" item-start *ngIf="isGPS == true"></ion-icon>
+          <ion-icon class="status-icon" name="close" item-start *ngIf="isGPS == 'error' "></ion-icon>
+          <h2>Obtendo dados do GPS...</h2>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content class="card-validation">
+      <ion-list>
+        <ion-item>
+          <ion-spinner item-start *ngIf="!isWeather"></ion-spinner>
+          <ion-icon class="status-icon" name="checkmark" item-start *ngIf="isWeather == true"></ion-icon>
+          <ion-icon class="status-icon" name="close" item-start *ngIf="isWeather == 'error' "></ion-icon>
+          <h2>Obtendo dados Climáticos...</h2>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <button (click)="this.mainProvider.getGeolocation()" ion-button full>Coordenadas</button>
+</ion-content>
+
+<!-- <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col col-12>
@@ -73,4 +104,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>
+</ion-content> -->

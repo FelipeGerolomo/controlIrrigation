@@ -8,4 +8,14 @@ page-dados-entrada {
         text-align: center;
         margin: 1px;
     }
+
+    .card-content-md.card-validation {
+        padding: 0px 12px;
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
+
+    ion-icon .status-icon {
+        margin-right: 0px;
+    }
 }

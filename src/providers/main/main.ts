@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { DataLocal } from '../../models/data_local';
 import { RadiacaoSolarLiquida } from '../../models/calc_radiacao_solar_liquida';
 import { ParametrosMeteorologicos } from '../../models/parametros_meteorologicos';
 import { Evapotranspiracao } from '../../models/evapotranspiracao';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Coordinates } from '../../models/coordinates';
+import { Events } from 'ionic-angular';
 
 /*
   Generated class for the MainProvider provider.
@@ -23,10 +24,14 @@ export class MainProvider {
   coordinates: Coordinates = new Coordinates();
   kc: any;
 
-  constructor(public http: HttpClient, private geolocation: Geolocation) {
+  @Output() feedbackGeoLocation = new EventEmitter();
+  @Output() feedbackWeather = new EventEmitter();
+
+
+  constructor(public http: HttpClient, private geolocation: Geolocation, public events: Events) {
     this.getCoefCultura();
     this.getDistanciaSolLua();
-    this.getGeolocation();
+    // this.getGeolocation();
   }
 
   getGeolocation() {
@@ -34,8 +39,10 @@ export class MainProvider {
     this.geolocation.getCurrentPosition(options).then((resp) => {
       this.coordinates.setValues(resp.coords.latitude, resp.coords.longitude, resp.coords.altitude)
       this.getCurrentWeather();
+      this.feedbackGeoLocation.emit(true);
       console.log(this.coordinates)
     }).catch((error) => {
+      this.feedbackGeoLocation.emit(false);
       console.log('Error getting location', error);
     });
   }
@@ -53,10 +60,11 @@ export class MainProvider {
           data['main'].humidity,
           data['wind'].speed
         )
-        console.log(data)
+        this.feedbackWeather.emit(true);
         console.log(this.meteorologia)
       },
       (error) => {
+        this.feedbackWeather.emit(false);
         console.log('Error getting weather', error);
       }
     )
@@ -189,8 +197,8 @@ export class MainProvider {
   getBalanco() {
     let valor = this.meteorologia.precipitation - this.evapotranspiracao.evapotranspiracaoCulturaMes;
     this.evapotranspiracao.balanco = valor;
-    console.log(this.evapotranspiracao);
-    console.log(this.radiacao_solar)
+    // console.log(this.evapotranspiracao);
+    // console.log(this.radiacao_solar)
   }
 
 }
