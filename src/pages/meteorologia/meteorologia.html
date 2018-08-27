@@ -14,35 +14,34 @@
       <ion-list>
         <ion-item>
           <h2>Temperatura Média.</h2>
-          <h2 item-end>{{dados.temp_avg}}</h2>
+          <h2 item-end>{{mainProvider.meteorologia.temp_avg | number:'1.1-1'}} °C</h2>
         </ion-item>
         <ion-item>
           <h2>Temperatura Máxima</h2>
-          <h2 item-end>{{dados.temp_max}}</h2>
+          <h2 item-end>{{mainProvider.meteorologia.temp_max | number:'1.1-1'}} °C</h2>
         </ion-item>
         <ion-item>
           <h2>Temperatura Mínima</h2>
-          <h2 item-end>{{dados.temp_min}}</h2>
+          <h2 item-end>{{mainProvider.meteorologia.temp_min | number:'1.1-1'}} °C</h2>
         </ion-item>
         <ion-item>
           <h2>Precipitação</h2>
-          <h2 item-end>{{dados.precipitation}} mm</h2>
+          <h2 item-end>SEM DADOS</h2>
         </ion-item>
         <ion-item>
           <h2>Umidade Relativa</h2>
-          <h2 item-end>{{dados.humidity}}</h2>
+          <h2 item-end>{{mainProvider.meteorologia.humidity}}%</h2>
         </ion-item>
         <ion-item>
           <h2>Velocidade do Vento</h2>
-          <h2 item-end>{{dados.wind}}</h2>
+          <h2 item-end>{{mainProvider.meteorologia.wind}} mph</h2>
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
 
   <div class="btns">
-    <button ion-button block>Importar Dados</button>
-    <button ion-button block color='secondary'>Atualizar</button>
+    <button ion-button block color='secondary' (click)="this.mainProvider.getGeolocation()">Atualizar</button>
   </div>
 
 

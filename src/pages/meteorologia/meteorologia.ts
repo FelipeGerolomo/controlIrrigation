@@ -19,6 +19,7 @@ export class MeteorologiaPage {
   dados: ParametrosMeteorologicos = new ParametrosMeteorologicos();
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private mainProvider: MainProvider) {
+    this.mainProvider.getGeolocation();
   }
 
   ionViewDidLoad() {

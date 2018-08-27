@@ -7,6 +7,8 @@ import { Evapotranspiracao } from '../../models/evapotranspiracao';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Coordinates } from '../../models/coordinates';
 import { Events } from 'ionic-angular';
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
+import { Storage } from '@ionic/storage';
 
 /*
   Generated class for the MainProvider provider.
@@ -16,30 +18,35 @@ import { Events } from 'ionic-angular';
 */
 @Injectable()
 export class MainProvider {
-  
+
   dadosEntrada: DataLocal = new DataLocal();
   radiacao_solar: RadiacaoSolarLiquida = new RadiacaoSolarLiquida();
   meteorologia: ParametrosMeteorologicos = new ParametrosMeteorologicos();
   evapotranspiracao: Evapotranspiracao = new Evapotranspiracao();
   coordinates: Coordinates = new Coordinates();
+  local: any;
   kc: any;
+  nativeGeocode: any;
+  cidade: String;
 
   @Output() feedbackGeoLocation = new EventEmitter();
   @Output() feedbackWeather = new EventEmitter();
 
 
-  constructor(public http: HttpClient, private geolocation: Geolocation, public events: Events) {
+  constructor(public http: HttpClient, private geolocation: Geolocation, public events: Events, private nativeGeocoder: NativeGeocoder, private storage: Storage) {
     this.getCoefCultura();
-    this.getDistanciaSolLua();
+    
     // this.getGeolocation();
   }
 
   getGeolocation() {
-    var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: false };
+    var options = { maximumAge: 3000, timeout: 15000, enableHighAccuracy: false };
     this.geolocation.getCurrentPosition(options).then((resp) => {
       this.coordinates.setValues(resp.coords.latitude, resp.coords.longitude, resp.coords.altitude)
-      this.getCurrentWeather();
+      this.cidade = "Maringá" //Remover
+      this.getCurrentWeather('Maringá');
       this.feedbackGeoLocation.emit(true);
+      // this.geoCode(resp.coords.latitude, resp.coords.longitude)
       console.log(this.coordinates)
     }).catch((error) => {
       this.feedbackGeoLocation.emit(false);
@@ -47,27 +54,44 @@ export class MainProvider {
     });
   }
 
-  getCurrentWeather() {
-    this.http.get("http://api.openweathermap.org/data/2.5/weather?lat=" + this.coordinates.latitude + "&lon=" + this.coordinates.longitude + "&appid=99b3f54b15ebb716b7b4d13714dfcb57")
+  geoCode(lat, long) {
+    let options: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5
+    };
+
+    this.nativeGeocoder.reverseGeocode(lat, long, options)
+      .then(
+        (result: NativeGeocoderReverseResult[]) => {
+          console.log(JSON.stringify(result))
+          this.cidade = result[0]["subAdministrativeArea"];
+          console.log("cidade", this.cidade);
+          this.getCurrentWeather(this.cidade)
+        })
+      .catch((error: any) => console.log(error));
+  }
+
+  getCurrentWeather(cidade) {
+    this.http.get("http://api.openweathermap.org/data/2.5/weather?q=" + cidade + ",BRA&appid=99b3f54b15ebb716b7b4d13714dfcb57")
       .subscribe(
         (data) => {
-        this.meteorologia.setValues(
-          data['name']+", "+data['sys'].country,
-          data['main'].temp,
-          data['main'].temp_max,
-          data['main'].temp_min,
-          0,
-          data['main'].humidity,
-          data['wind'].speed
-        )
-        this.feedbackWeather.emit(true);
-        console.log(this.meteorologia)
-      },
-      (error) => {
-        this.feedbackWeather.emit(false);
-        console.log('Error getting weather', error);
-      }
-    )
+          this.meteorologia.setValues(
+            data['name'] + ", " + data['sys'].country,
+            data['main'].temp,
+            data['main'].temp_max,
+            data['main'].temp_min,
+            0,
+            data['main'].humidity,
+            data['wind'].speed
+          )
+          this.feedbackWeather.emit(true);
+          console.log(this.meteorologia)
+        },
+        (error) => {
+          this.feedbackWeather.emit(false);
+          console.log('Error getting weather', error);
+        }
+      )
   }
 
   getCoefCultura() {
@@ -75,6 +99,18 @@ export class MainProvider {
       .subscribe(data => {
         this.kc = data;
       })
+  }
+
+  saveLocal() {
+    this.dadosEntrada.cidade = this.cidade;
+    this.dadosEntrada.latitude = -0.39;
+    this.dadosEntrada.longitude = this.coordinates.longitude;
+    this.dadosEntrada.altitude = 30.00;
+    this.dadosEntrada.calcPatm();
+    this.dadosEntrada.calcConstantePsicometrica();
+    this.storage.set('local', this.dadosEntrada);
+    this.getDistanciaSolLua();
+    console.log(this.dadosEntrada)
   }
 
   // <------ Cálculos da Radiação Solar Start ------>
@@ -197,8 +233,8 @@ export class MainProvider {
   getBalanco() {
     let valor = this.meteorologia.precipitation - this.evapotranspiracao.evapotranspiracaoCulturaMes;
     this.evapotranspiracao.balanco = valor;
-    // console.log(this.evapotranspiracao);
-    // console.log(this.radiacao_solar)
+    console.log(this.evapotranspiracao);
+    console.log(this.radiacao_solar)
   }
 
 }

@@ -3,105 +3,63 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Dados de Entrada</ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
   <ion-card>
+    <ion-card-header>
+      Perfil Nome
+    </ion-card-header>
     <ion-card-content class="card-validation">
       <ion-list>
         <ion-item>
-          <ion-spinner item-start *ngIf="!isGPS" ></ion-spinner>
-          <ion-icon class="status-icon" name="checkmark" item-start *ngIf="isGPS == true"></ion-icon>
-          <ion-icon class="status-icon" name="close" item-start *ngIf="isGPS == 'error' "></ion-icon>
-          <h2>Obtendo dados do GPS...</h2>
+          <h2>Latitude</h2>
+          <h2 item-end>-0.39</h2>
+        </ion-item>
+        <ion-item>
+          <h2>Longitude</h2>
+          <h2 item-end>-0.39</h2>
+        </ion-item>
+        <ion-item>
+          <h2>Coef. de Cultura</h2>
+          <h2 item-end>-0.39</h2>
+        </ion-item>
+        <ion-item>
+          <h2>Área Plantada</h2>
+          <h2 item-end>-0.39</h2>
+        </ion-item>
+        <ion-item>
+          <h2>PATM</h2>
+          <h2 item-end>-0.39</h2>
+        </ion-item>
+        <ion-item>
+          <h2>Constante ϒ</h2>
+          <h2 item-end>-0.39</h2>
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
-    <ion-card-content class="card-validation">
-      <ion-list>
-        <ion-item>
-          <ion-spinner item-start *ngIf="!isWeather"></ion-spinner>
-          <ion-icon class="status-icon" name="checkmark" item-start *ngIf="isWeather == true"></ion-icon>
-          <ion-icon class="status-icon" name="close" item-start *ngIf="isWeather == 'error' "></ion-icon>
-          <h2>Obtendo dados Climáticos...</h2>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+  <hr>
 
-  <button (click)="this.mainProvider.getGeolocation()" ion-button full>Coordenadas</button>
-</ion-content>
-
-<!-- <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col col-12>
-        <ion-item>
-          <ion-label floating>Local</ion-label>
-          <ion-input [(ngModel)]="dadosEntrada.local" type="text"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-6>
-        <ion-item>
-          <ion-label floating>Latitude</ion-label>
-          <ion-input type="number"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col col-6>
-        <ion-item>
-          <ion-label floating>Altitude</ion-label>
-          <ion-input (input)="this.dadosEntrada.calcPatm()" [(ngModel)]="dadosEntrada.altitude" type="number"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-6>
-        <ion-item>
-          <ion-label floating>Albedo</ion-label>
-          <ion-input type="number"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col col-6>
-        <ion-item>
-          <ion-label floating>Patm</ion-label>
-          <ion-input [(ngModel)]="dadosEntrada.patm" type="number" disabled></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-6>
-        <ion-item>
-          <ion-label floating>Const. Psicrométrica</ion-label>
-          <ion-input (input)="this.dadosEntrada.calcConstantePsicometrica()" [(ngModel)]="dadosEntrada.constante_psicometrica" type="number"
-            disabled></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col col-6>
-        <ion-item>
-          <ion-label floating>Coef. de Cultura</ion-label>
-          <ion-select>
-            <ion-option *ngFor="let kc of listKC" value="{{kc.ID}}">{{kc.Cultura}}</ion-option>
-          </ion-select>
-        </ion-item>
+        <button (click)="criar()" ion-button full>Criar</button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-12>
-        <button (click)="save()" ion-button full>Salvar Dados</button>
+        <button (click)="recuperar()" ion-button full>Recuperar</button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-12>
-        <button (click)="getGeolocation()" ion-button full>Coordenadas</button>
+        <button (click)="excluir()" ion-button full>Excluir</button>
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content> -->
+</ion-content>

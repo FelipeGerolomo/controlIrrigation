@@ -2,14 +2,22 @@
 export class DataLocal {
     local: String;
     latitude: number = -0.39;
+    longitude: number = null;
+    cidade: String = null;
     altitude: number = 30.00;
     albedo: number = 0.23; //dado fixo
     patm: number;
     constante_psicometrica: number;
-    coeficienteCultura: number = 1.2;
+    coeficienteCulturaID: any;
+    coeficienteCultura: number;
+    areaPlantada: number = null;
 
     constructor() {
-        this.calcPatm();
+        // this.calcPatm();
+    }
+
+    onChange() {
+        console.log(this.coeficienteCulturaID)
     }
 
     calcPatm() {

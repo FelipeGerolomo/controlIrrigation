@@ -13,7 +13,7 @@ export class HomePage {
     public navCtrl: NavController,
     public mainProvider: MainProvider,
   ) {
-    
+    this.mainProvider.getGeolocation();
   }
 
 }

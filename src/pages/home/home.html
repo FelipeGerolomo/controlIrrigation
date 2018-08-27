@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+  <!-- <h2>{{mainProvider.nativeGeocode}}</h2> -->
   <ion-card>
     <ion-card-header>
       {{mainProvider.meteorologia.location}}
@@ -16,25 +17,25 @@
     <ion-card-content>
       <ion-grid>
         <ion-row>
-          <ion-col col-6>
-            <img class="weather-icon yellow" src="../../assets/weather_icons/016-sun.svg" alt="" srcset="">
-          </ion-col>
-          <ion-col col-6 class="flex-container-center">
+          <!-- <ion-col col-6>
+            <img class="weather-icon yellow" src="assets/weather_icons/016-sun.svg" alt="" srcset="">
+          </ion-col> -->
+          <ion-col col-12 class="flex-container-center">
             <h2 class="temperatura">{{mainProvider.meteorologia.temp_avg | number:'1.1-1'}} °C</h2>
           </ion-col>
         </ion-row>
 
         <ion-row>
           <ion-col col-4 class="param-met flex-container-center">
-            <img src="../../assets/weather_icons/014-drop.svg" alt="" srcset="">
+            <img src="assets/weather_icons/014-drop.svg" alt="" srcset="">
             <h4>{{mainProvider.meteorologia.humidity}}%</h4>
           </ion-col>
           <ion-col col-4 class="param-met flex-container-center">
-            <img src="../../assets/weather_icons/013-wind.svg" alt="" srcset="">
+            <img src="assets/weather_icons/013-wind.svg" alt="" srcset="">
             <h4>{{mainProvider.meteorologia.wind}} m/s</h4>
           </ion-col>
           <ion-col col-4 class="param-met flex-container-center">
-            <img src="../../assets/weather_icons/007-rain.svg" alt="" srcset="">
+            <img src="assets/weather_icons/007-rain.svg" alt="" srcset="">
             <h4>{{mainProvider.meteorologia.precipitation}}%</h4>
           </ion-col>
         </ion-row>
@@ -52,7 +53,7 @@
       <ion-grid>
         <ion-row>
           <ion-col col-6>
-            <img src="../../assets/imgs/irrigation.svg" alt="" srcset="" class="irrigation-icon">
+            <img src="assets/imgs/irrigation.svg" alt="" srcset="" class="irrigation-icon">
           </ion-col>
           <ion-col col-6 class="status-irrigation">
             <div>

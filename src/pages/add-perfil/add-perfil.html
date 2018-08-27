@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Criar Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-content class="card-validation">
+      <ion-list>
+        <ion-item>
+          <ion-spinner item-start *ngIf="!isGPS"></ion-spinner>
+          <ion-icon class="status-icon" name="checkmark" item-start *ngIf="isGPS == true"></ion-icon>
+          <ion-icon class="status-icon" name="close" item-start *ngIf="isGPS == 'error' "></ion-icon>
+          <h2>Obtendo dados do GPS...</h2>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content class="card-validation">
+      <ion-list>
+        <ion-item>
+          <ion-spinner item-start *ngIf="!isWeather"></ion-spinner>
+          <ion-icon class="status-icon" name="checkmark" item-start *ngIf="isWeather == true"></ion-icon>
+          <ion-icon class="status-icon" name="close" item-start *ngIf="isWeather == 'error' "></ion-icon>
+          <h2>Obtendo dados Climáticos...</h2>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <hr>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label floating>Local</ion-label>
+          <ion-input [(ngModel)]="this.mainProvider.dadosEntrada.local" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label floating>Coef. de Cultura</ion-label>
+          <ion-select [(ngModel)]="this.mainProvider.dadosEntrada.coeficienteCulturaID" (ionChange)="onChange(this.mainProvider.dadosEntrada.coeficienteCulturaID)">
+            <ion-option *ngFor="let kc of this.mainProvider.kc" value="{{kc.ID}}" type="number">{{kc.Cultura}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label floating>Área Plantada (m²)</ion-label>
+          <ion-input [(ngModel)]="this.mainProvider.dadosEntrada.areaPlantada" type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <button (click)="this.mainProvider.saveLocal()" ion-button full>Salvar Dados</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

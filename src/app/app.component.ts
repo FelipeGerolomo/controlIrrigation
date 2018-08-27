@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { DadosEntradaPage } from '../pages/dados-entrada/dados-entrada';
 import { MeteorologiaPage } from '../pages/meteorologia/meteorologia';
 import { GeolocationPage } from '../pages/geolocation/geolocation';
+import { AddPerfilPage } from '../pages/add-perfil/add-perfil';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class MyApp {
       { title: 'Dados de Entrada', component: DadosEntradaPage },
       { title: 'Dados de Meteorológicos', component: MeteorologiaPage },
       { title: 'Geolocation', component: GeolocationPage },
+      { title: 'ADD', component: AddPerfilPage },
     ];
 
   }

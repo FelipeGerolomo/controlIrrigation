@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { LocalNotifications } from "@ionic-native/local-notifications";
 import { Geolocation } from '@ionic-native/geolocation';
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -16,6 +18,7 @@ import { MeteorologiaPage } from '../pages/meteorologia/meteorologia';
 import { MainProvider } from '../providers/main/main';
 import { HttpClientModule } from '@angular/common/http';
 import { GeolocationPage } from '../pages/geolocation/geolocation';
+import { AddPerfilPage } from '../pages/add-perfil/add-perfil';
 
 
 
@@ -25,11 +28,13 @@ import { GeolocationPage } from '../pages/geolocation/geolocation';
     HomePage,
     DadosEntradaPage,
     MeteorologiaPage,
-    GeolocationPage
+    GeolocationPage,
+    AddPerfilPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     HttpClientModule
   ],
   bootstrap: [IonicApp],
@@ -38,12 +43,14 @@ import { GeolocationPage } from '../pages/geolocation/geolocation';
     HomePage,
     DadosEntradaPage,
     MeteorologiaPage,
-    GeolocationPage
+    GeolocationPage,
+    AddPerfilPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     LocalNotifications,
+    NativeGeocoder, 
     Geolocation,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     MainProvider,

@@ -2,15 +2,14 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
 import { DataLocal } from '../../models/data_local';
 import { MainProvider } from '../../providers/main/main';
-import { AddPerfilPage } from '../add-perfil/add-perfil';
-import { Storage } from '@ionic/storage';
+
 
 @IonicPage()
 @Component({
-  selector: 'page-dados-entrada',
-  templateUrl: 'dados-entrada.html',
+  selector: 'page-add-perfil',
+  templateUrl: 'add-perfil.html',
 })
-export class DadosEntradaPage {
+export class AddPerfilPage {
   dadosEntrada: DataLocal = new DataLocal();
   listKC: any;
 
@@ -23,32 +22,17 @@ export class DadosEntradaPage {
     public navParams: NavParams,
     public mainProvider: MainProvider,
     public loadingCtrl: LoadingController,
-    public events: Events,
-    private storage: Storage
+    public events: Events
   ) {
     this.mainProvider.getGeolocation();
   }
 
   onChange(id) {
     for (let index = 0; index < this.mainProvider.kc.length; index++) {
-      if(id == this.mainProvider.kc[index]["ID"]) {
+      if (id == this.mainProvider.kc[index]["ID"]) {
         this.mainProvider.dadosEntrada.coeficienteCultura = this.mainProvider.kc[index]["ESTAG4"]
       }
     }
-  }
-
-  criar() {
-    this.navCtrl.push(AddPerfilPage)
-  }
-
-  recuperar() {
-    this.storage.get('local').then((val) => {
-      console.log('Your age is', val);
-    });
-  }
-
-  excluir() {
-    this.storage.remove('local');
   }
 
   ionViewDidLoad() {
@@ -70,4 +54,3 @@ export class DadosEntradaPage {
   }
 
 }
-

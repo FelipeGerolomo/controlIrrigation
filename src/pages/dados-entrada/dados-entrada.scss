@@ -9,13 +9,30 @@ page-dados-entrada {
         margin: 1px;
     }
 
+    .card-header-md {
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+
     .card-content-md.card-validation {
         padding: 0px 12px;
         font-size: 1.4rem;
         line-height: 1.5;
+        margin-top: 5px;
     }
 
     ion-icon .status-icon {
         margin-right: 0px;
+    }
+
+    .item-md {
+        padding-left: 0px;
+    }
+
+    ion-item h2 {
+        padding-left: 10px;
+    }
+
+    .card-md .item-md.item-block .item-inner {
+        border-bottom: 1px solid #dedede;
     }
 }
