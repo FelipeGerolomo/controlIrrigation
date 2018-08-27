@@ -9,35 +9,42 @@
 
 
 <ion-content>
-  <ion-card>
+
+  <ion-card *ngIf="!this.mainProvider.isLocal">
+    <ion-card-content>
+        <h5 class="no-perfil">Não existe perfil cadastrado</h5>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="this.mainProvider.isLocal">
     <ion-card-header>
-      Perfil Nome
+      {{this.mainProvider.local.local}}
     </ion-card-header>
     <ion-card-content class="card-validation">
       <ion-list>
         <ion-item>
           <h2>Latitude</h2>
-          <h2 item-end>-0.39</h2>
+          <h2 item-end>{{this.mainProvider.local.latitude}}</h2>
         </ion-item>
         <ion-item>
           <h2>Longitude</h2>
-          <h2 item-end>-0.39</h2>
+          <h2 item-end>{{this.mainProvider.local.longitude}}</h2>
         </ion-item>
         <ion-item>
           <h2>Coef. de Cultura</h2>
-          <h2 item-end>-0.39</h2>
+          <h2 item-end>{{this.mainProvider.local.coeficienteCultura}}</h2>
         </ion-item>
         <ion-item>
           <h2>Área Plantada</h2>
-          <h2 item-end>-0.39</h2>
+          <h2 item-end>{{this.mainProvider.local.areaPlantada}}</h2>
         </ion-item>
         <ion-item>
           <h2>PATM</h2>
-          <h2 item-end>-0.39</h2>
+          <h2 item-end>{{this.mainProvider.local.patm}}</h2>
         </ion-item>
         <ion-item>
           <h2>Constante ϒ</h2>
-          <h2 item-end>-0.39</h2>
+          <h2 item-end>{{this.mainProvider.local.constante_psicometrica}}</h2>
         </ion-item>
       </ion-list>
     </ion-card-content>

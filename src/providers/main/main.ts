@@ -28,6 +28,7 @@ export class MainProvider {
   kc: any;
   nativeGeocode: any;
   cidade: String;
+  isLocal: any;
 
   @Output() feedbackGeoLocation = new EventEmitter();
   @Output() feedbackWeather = new EventEmitter();
@@ -35,7 +36,7 @@ export class MainProvider {
 
   constructor(public http: HttpClient, private geolocation: Geolocation, public events: Events, private nativeGeocoder: NativeGeocoder, private storage: Storage) {
     this.getCoefCultura();
-    
+    this.getGeolocation();
     // this.getGeolocation();
   }
 
@@ -47,7 +48,7 @@ export class MainProvider {
       this.getCurrentWeather('Maringá');
       this.feedbackGeoLocation.emit(true);
       // this.geoCode(resp.coords.latitude, resp.coords.longitude)
-      console.log(this.coordinates)
+      // console.log(this.coordinates)
     }).catch((error) => {
       this.feedbackGeoLocation.emit(false);
       console.log('Error getting location', error);
@@ -63,9 +64,9 @@ export class MainProvider {
     this.nativeGeocoder.reverseGeocode(lat, long, options)
       .then(
         (result: NativeGeocoderReverseResult[]) => {
-          console.log(JSON.stringify(result))
+          // console.log(JSON.stringify(result))
           this.cidade = result[0]["subAdministrativeArea"];
-          console.log("cidade", this.cidade);
+          // console.log("cidade", this.cidade);
           this.getCurrentWeather(this.cidade)
         })
       .catch((error: any) => console.log(error));
@@ -85,7 +86,8 @@ export class MainProvider {
             data['wind'].speed
           )
           this.feedbackWeather.emit(true);
-          console.log(this.meteorologia)
+          this.recuperar();
+          // console.log("temp",this.meteorologia)
         },
         (error) => {
           this.feedbackWeather.emit(false);
@@ -103,15 +105,36 @@ export class MainProvider {
 
   saveLocal() {
     this.dadosEntrada.cidade = this.cidade;
-    this.dadosEntrada.latitude = -0.39;
+    this.dadosEntrada.latitude = this.latitudeRadianos(this.coordinates.latitude);
     this.dadosEntrada.longitude = this.coordinates.longitude;
     this.dadosEntrada.altitude = 30.00;
     this.dadosEntrada.calcPatm();
     this.dadosEntrada.calcConstantePsicometrica();
     this.storage.set('local', this.dadosEntrada);
-    this.getDistanciaSolLua();
     console.log(this.dadosEntrada)
   }
+
+  recuperar() {
+    this.storage.get('local').then((val) => {
+      if (val == null) {
+        this.isLocal = false;
+        this.local = null;
+        console.log("local", val)
+      } else {
+        this.isLocal = true;
+        this.local = val;
+        console.log("local", val)
+        this.getDistanciaSolLua();
+      }
+    });
+  }
+
+  latitudeRadianos(latitude) {
+    let valor = latitude * Math.PI;
+    valor = valor / 180;
+    return valor;
+  }
+
 
   // <------ Cálculos da Radiação Solar Start ------>
   getDistanciaSolLua() {
@@ -131,7 +154,7 @@ export class MainProvider {
   getX() {
     let tan1 = (Math.tan(this.radiacao_solar.declividadeSolar))
     tan1 = Math.pow(tan1, 2)
-    let tan2 = (Math.tan(this.dadosEntrada.latitude))
+    let tan2 = (Math.tan(this.local.latitude))
     tan2 = Math.pow(tan2, 2)
     let valor = (1 - (tan1 * tan2));
     this.radiacao_solar.x = valor;
@@ -140,14 +163,14 @@ export class MainProvider {
 
   getAnguloNascerSol() {
     let x_2 = Math.pow(this.radiacao_solar.x, 0.5);
-    let valor = Math.PI / 2 - Math.atan(-Math.tan(this.dadosEntrada.latitude) * Math.tan(this.radiacao_solar.declividadeSolar) / x_2);
+    let valor = Math.PI / 2 - Math.atan(-Math.tan(this.local.latitude) * Math.tan(this.radiacao_solar.declividadeSolar) / x_2);
     this.radiacao_solar.anguloNascerSol = valor;
     this.getStop();
   }
 
   getStop() {
     let dist_pi = (118.08 * (this.radiacao_solar.distanciaSolLua / Math.PI));
-    let valor = dist_pi * ((this.radiacao_solar.anguloNascerSol) * (Math.sin(this.dadosEntrada.latitude)) * (Math.sin(this.radiacao_solar.declividadeSolar)) + (Math.cos(this.dadosEntrada.latitude)) * (Math.cos(this.radiacao_solar.declividadeSolar) * (Math.sin(this.radiacao_solar.anguloNascerSol))))
+    let valor = dist_pi * ((this.radiacao_solar.anguloNascerSol) * (Math.sin(this.local.latitude)) * (Math.sin(this.radiacao_solar.declividadeSolar)) + (Math.cos(this.local.latitude)) * (Math.cos(this.radiacao_solar.declividadeSolar) * (Math.sin(this.radiacao_solar.anguloNascerSol))))
     this.radiacao_solar.radiacaoSolarTop = valor;
     this.getSsup();
   }
@@ -156,12 +179,13 @@ export class MainProvider {
     let valor = 0.19 * this.radiacao_solar.radiacaoSolarTop;
     let raiz = Math.sqrt((this.meteorologia.temp_max) - (this.meteorologia.temp_min))
     valor = valor * raiz;
+    console.log(this.meteorologia.temp_max)
     this.radiacao_solar.radiacaoSolarSup = valor;
     this.getRadiacaoLiquida();
   }
 
   getRadiacaoLiquida() {
-    let valor = 1 - this.dadosEntrada.albedo
+    let valor = 1 - this.local.albedo
     valor = valor * this.radiacao_solar.radiacaoSolarSup;
     this.radiacao_solar.radiacaoSolarLiquida = valor;
     // console.log(this.radiacao_solar)
@@ -198,8 +222,8 @@ export class MainProvider {
 
   getEvapotranspiracaoReferencia() {
     //Revisar a Formula
-    let valor1 = (0.408 * this.evapotranspiracao.delta * this.radiacao_solar.radiacaoSolarLiquida) + (this.dadosEntrada.constante_psicometrica * (900 / (this.meteorologia.temp_avg + 273))) * this.meteorologia.wind * this.evapotranspiracao.delta * this.evapotranspiracao.deficitSaturacao;
-    let valor2 = (this.evapotranspiracao.delta + this.dadosEntrada.constante_psicometrica * (1 + 0.34 * this.meteorologia.wind))
+    let valor1 = (0.408 * this.evapotranspiracao.delta * this.radiacao_solar.radiacaoSolarLiquida) + (this.local.constante_psicometrica * (900 / (this.meteorologia.temp_avg + 273))) * this.meteorologia.wind * this.evapotranspiracao.delta * this.evapotranspiracao.deficitSaturacao;
+    let valor2 = (this.evapotranspiracao.delta + this.local.constante_psicometrica * (1 + 0.34 * this.meteorologia.wind))
     valor1 = valor1
     // valor2 = valor2.toFixed(2)-0.01;
     let valorFinal = valor1 / valor2;
@@ -210,7 +234,7 @@ export class MainProvider {
 
   getKc() {
     let potencia = Math.pow((2 / 3), 0.3);
-    let valor = this.dadosEntrada.coeficienteCultura + (0.04) * (this.meteorologia.wind - 2) - 0.004 * (this.meteorologia.humidity - 45) * potencia;
+    let valor = this.local.coeficienteCultura + (0.04) * (this.meteorologia.wind - 2) - 0.004 * (this.meteorologia.humidity - 45) * potencia;
     this.evapotranspiracao.kc = valor;
     this.getEvapotranspiracaoCulturaDia();
   }

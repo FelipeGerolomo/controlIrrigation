@@ -1,7 +1,7 @@
 
 export class DataLocal {
     local: String;
-    latitude: number = -0.39;
+    latitude: number = null;
     longitude: number = null;
     cidade: String = null;
     altitude: number = 30.00;

@@ -11,12 +11,13 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'dados-entrada.html',
 })
 export class DadosEntradaPage {
-  dadosEntrada: DataLocal = new DataLocal();
+  // dadosEntrada: DataLocal = new DataLocal();
   listKC: any;
-
+  local: any;
   isGPS: any = false;
   isWeather: any = false;
   isError: any = false;
+  isLocal: any;
 
   constructor(
     public navCtrl: NavController,
@@ -26,12 +27,13 @@ export class DadosEntradaPage {
     public events: Events,
     private storage: Storage
   ) {
+    this.recuperar();
     this.mainProvider.getGeolocation();
   }
 
   onChange(id) {
     for (let index = 0; index < this.mainProvider.kc.length; index++) {
-      if(id == this.mainProvider.kc[index]["ID"]) {
+      if (id == this.mainProvider.kc[index]["ID"]) {
         this.mainProvider.dadosEntrada.coeficienteCultura = this.mainProvider.kc[index]["ESTAG4"]
       }
     }
@@ -43,29 +45,28 @@ export class DadosEntradaPage {
 
   recuperar() {
     this.storage.get('local').then((val) => {
-      console.log('Your age is', val);
+      if (val == null) {
+        this.isLocal = false;
+        this.local = null;
+        // console.log("local", val)
+      } else {
+        this.isLocal = true;
+        this.local = val;
+        // console.log("local", val)
+      }
     });
   }
 
   excluir() {
     this.storage.remove('local');
+    setTimeout(() => {
+      this.recuperar();
+    }, 1000);
+
   }
 
   ionViewDidLoad() {
-    this.mainProvider.feedbackGeoLocation.subscribe(data => {
-      if (data) {
-        this.isGPS = true;
-      } else {
-        this.isGPS = "error"
-      }
-    })
-    this.mainProvider.feedbackWeather.subscribe(data => {
-      if (data) {
-        this.isWeather = true;
-      } else {
-        this.isWeather = "error";
-      }
-    })
+    this.recuperar();
     console.log('ionViewDidLoad DadosEntradaPage');
   }
 
