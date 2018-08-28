@@ -27,7 +27,7 @@ export class DadosEntradaPage {
     public events: Events,
     private storage: Storage
   ) {
-    this.recuperar();
+    // this.mainProvider.recuperar();
     this.mainProvider.getGeolocation();
   }
 
@@ -43,30 +43,8 @@ export class DadosEntradaPage {
     this.navCtrl.push(AddPerfilPage)
   }
 
-  recuperar() {
-    this.storage.get('local').then((val) => {
-      if (val == null) {
-        this.isLocal = false;
-        this.local = null;
-        // console.log("local", val)
-      } else {
-        this.isLocal = true;
-        this.local = val;
-        // console.log("local", val)
-      }
-    });
-  }
-
-  excluir() {
-    this.storage.remove('local');
-    setTimeout(() => {
-      this.recuperar();
-    }, 1000);
-
-  }
-
   ionViewDidLoad() {
-    this.recuperar();
+    this.mainProvider.recuperar();
     console.log('ionViewDidLoad DadosEntradaPage');
   }
 

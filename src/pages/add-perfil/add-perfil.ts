@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
 import { DataLocal } from '../../models/data_local';
 import { MainProvider } from '../../providers/main/main';
+import { DadosEntradaPage } from '../dados-entrada/dados-entrada';
 
 
 @IonicPage()
@@ -33,6 +34,14 @@ export class AddPerfilPage {
         this.mainProvider.dadosEntrada.coeficienteCultura = this.mainProvider.kc[index]["ESTAG4"]
       }
     }
+  }
+
+  redirect() {
+    this.navCtrl.popTo(DadosEntradaPage);
+    setTimeout(() => {
+      this.mainProvider.recuperar();
+    }, 500);
+
   }
 
   ionViewDidLoad() {

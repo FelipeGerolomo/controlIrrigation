@@ -7,13 +7,26 @@
   </ion-navbar>
 </ion-header>
 
+
+
 <ion-content>
-  <!-- <h2>{{mainProvider.nativeGeocode}}</h2> -->
-  <ion-card>
+
+  <ion-card *ngIf="!this.isWeather">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <h2 class="no-gps">Sem dados Meteorológicos</h2>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="this.isWeather">
     <ion-card-header>
       {{mainProvider.meteorologia.location}}
     </ion-card-header>
-
     <ion-card-content>
       <ion-grid>
         <ion-row>
@@ -44,11 +57,43 @@
   </ion-card>
 
   <ion-card>
+    <ion-card-header>
+      ETC (mm/Dia)
+    </ion-card-header>
+    <ion-card-content class="etc">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 class="flex-container-center">
+            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">{{mainProvider.evapotranspiracao.evapotranspiracaoCulturaDia
+              | number:'1.3-3'}}mm</h2>
+            <h5 class="no-perfil" *ngIf="!this.mainProvider.isLocal">Não existe perfil cadastrado</h5>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-card>
+    <ion-card-header>
+      ETC (mm/Mês)
+    </ion-card-header>
+    <ion-card-content class="etc">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 class="flex-container-center">
+            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">{{mainProvider.evapotranspiracao.evapotranspiracaoCulturaMes
+              | number:'1.3-3'}}mm</h2>
+            <h5 class="no-perfil" *ngIf="!this.mainProvider.isLocal">Não existe perfil cadastrado</h5>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
     <ion-card-header>
       Irrigação
     </ion-card-header>
-
     <ion-card-content class="status-irrigation-card">
       <ion-grid>
         <ion-row>

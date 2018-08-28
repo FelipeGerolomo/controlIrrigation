@@ -6,9 +6,10 @@ import { ParametrosMeteorologicos } from '../../models/parametros_meteorologicos
 import { Evapotranspiracao } from '../../models/evapotranspiracao';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Coordinates } from '../../models/coordinates';
-import { Events } from 'ionic-angular';
+import { Events, NavController } from 'ionic-angular';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 import { Storage } from '@ionic/storage';
+import { DadosEntradaPage } from '../../pages/dados-entrada/dados-entrada';
 
 /*
   Generated class for the MainProvider provider.
@@ -37,7 +38,7 @@ export class MainProvider {
   constructor(public http: HttpClient, private geolocation: Geolocation, public events: Events, private nativeGeocoder: NativeGeocoder, private storage: Storage) {
     this.getCoefCultura();
     this.getGeolocation();
-    // this.getGeolocation();
+    this.recuperar();
   }
 
   getGeolocation() {
@@ -86,7 +87,6 @@ export class MainProvider {
             data['wind'].speed
           )
           this.feedbackWeather.emit(true);
-          this.recuperar();
           // console.log("temp",this.meteorologia)
         },
         (error) => {
@@ -108,9 +108,10 @@ export class MainProvider {
     this.dadosEntrada.latitude = this.latitudeRadianos(this.coordinates.latitude);
     this.dadosEntrada.longitude = this.coordinates.longitude;
     this.dadosEntrada.altitude = 30.00;
+    this.storage.set('local', this.dadosEntrada);
     this.dadosEntrada.calcPatm();
     this.dadosEntrada.calcConstantePsicometrica();
-    this.storage.set('local', this.dadosEntrada);
+    // this.recuperar();
     console.log(this.dadosEntrada)
   }
 
@@ -127,6 +128,11 @@ export class MainProvider {
         this.getDistanciaSolLua();
       }
     });
+  }
+
+  excluir() {
+    this.storage.remove('local');
+    this.recuperar();
   }
 
   latitudeRadianos(latitude) {

@@ -54,4 +54,20 @@ page-home {
     .status-irrigation-card {
         padding: 2px 0px;
     }
+
+    .no-perfil {
+        text-align: center;
+        color: gray;
+    }
+
+    .no-gps {
+        text-align: center;
+        color: gray;
+    }
+
+    .card-content-md.etc {
+        padding: 0px 16px;
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
 }

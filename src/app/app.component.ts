@@ -16,7 +16,7 @@ import { AddPerfilPage } from '../pages/add-perfil/add-perfil';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = DadosEntradaPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -26,7 +26,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Dados de Entrada', component: DadosEntradaPage },
+      { title: 'Perfil', component: DadosEntradaPage },
       { title: 'Dados de Meteorológicos', component: MeteorologiaPage },
       { title: 'Geolocation', component: GeolocationPage },
       { title: 'ADD', component: AddPerfilPage },
