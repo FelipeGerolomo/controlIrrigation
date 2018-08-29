@@ -86,7 +86,7 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Geolocation" />
     </plugin>
     <plugin name="cordova-plugin-nativegeocoder" spec="^3.1.2" />
+    <plugin name="cordova-sqlite-storage" spec="^2.4.0" />
     <engine name="browser" spec="5.0.3" />
     <engine name="android" spec="7.0.0" />
-    <plugin name="cordova-sqlite-storage" spec="^2.4.0" />
 </widget>

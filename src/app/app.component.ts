@@ -29,7 +29,7 @@ export class MyApp {
       { title: 'Perfil', component: DadosEntradaPage },
       { title: 'Dados de Meteorológicos', component: MeteorologiaPage },
       { title: 'Geolocation', component: GeolocationPage },
-      { title: 'ADD', component: AddPerfilPage },
+      // { title: 'ADD', component: AddPerfilPage },
     ];
 
   }

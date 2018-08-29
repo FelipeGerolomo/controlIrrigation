@@ -45,10 +45,10 @@ export class MainProvider {
     var options = { maximumAge: 3000, timeout: 15000, enableHighAccuracy: false };
     this.geolocation.getCurrentPosition(options).then((resp) => {
       this.coordinates.setValues(resp.coords.latitude, resp.coords.longitude, resp.coords.altitude)
-      this.cidade = "Maringá" //Remover
-      this.getCurrentWeather('Maringá');
+      //this.cidade = "Maringá" //Remover
+      // this.getCurrentWeather('Maringá');
       this.feedbackGeoLocation.emit(true);
-      // this.geoCode(resp.coords.latitude, resp.coords.longitude)
+      this.geoCode(resp.coords.latitude, resp.coords.longitude)
       // console.log(this.coordinates)
     }).catch((error) => {
       this.feedbackGeoLocation.emit(false);
@@ -107,7 +107,11 @@ export class MainProvider {
     this.dadosEntrada.cidade = this.cidade;
     this.dadosEntrada.latitude = this.latitudeRadianos(this.coordinates.latitude);
     this.dadosEntrada.longitude = this.coordinates.longitude;
-    this.dadosEntrada.altitude = 30.00;
+    if (this.coordinates.altitude != null) {
+      this.dadosEntrada.altitude = this.coordinates.altitude;
+    } else {
+      this.dadosEntrada.altitude = 30.00;
+    }
     this.storage.set('local', this.dadosEntrada);
     this.dadosEntrada.calcPatm();
     this.dadosEntrada.calcConstantePsicometrica();
