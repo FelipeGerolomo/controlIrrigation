@@ -10,7 +10,7 @@ export class DataLocal {
     constante_psicometrica: number;
     coeficienteCulturaID: any;
     coeficienteCultura: number;
-    areaPlantada: number = null;
+    areaPlantada: any = null;
 
     constructor() {
         // this.calcPatm();

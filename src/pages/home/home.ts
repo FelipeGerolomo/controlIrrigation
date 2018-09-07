@@ -18,14 +18,14 @@ export class HomePage {
     public navCtrl: NavController,
     public mainProvider: MainProvider,
   ) {
-
+    this.mainProvider.recuperar;
   }
 
   ionViewDidLoad() {
     this.mainProvider.feedbackGeoLocation.subscribe(data => {
       if (data) {
         this.isGPS = true;
-        console.log("GPS", this.isGPS)
+        // console.log("GPS", this.isGPS)
       } else {
         this.isGPS = "error"
       }
@@ -33,11 +33,10 @@ export class HomePage {
     this.mainProvider.feedbackWeather.subscribe(data => {
       if (data) {
         this.isWeather = true;
-        console.log("GPS", this.isGPS)
+        // console.log("GPS", this.isGPS)
       } else {
         this.isWeather = "error";
       }
     })
-    this.mainProvider.getGeolocation();
   }
 }

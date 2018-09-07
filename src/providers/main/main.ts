@@ -45,8 +45,8 @@ export class MainProvider {
     var options = { maximumAge: 3000, timeout: 15000, enableHighAccuracy: false };
     this.geolocation.getCurrentPosition(options).then((resp) => {
       this.coordinates.setValues(resp.coords.latitude, resp.coords.longitude, resp.coords.altitude)
-      //this.cidade = "Maringá" //Remover
-      // this.getCurrentWeather('Maringá');
+      this.cidade = "Maringá" //Remover
+      this.getCurrentWeather('Maringá');
       this.feedbackGeoLocation.emit(true);
       this.geoCode(resp.coords.latitude, resp.coords.longitude)
       // console.log(this.coordinates)
@@ -65,9 +65,7 @@ export class MainProvider {
     this.nativeGeocoder.reverseGeocode(lat, long, options)
       .then(
         (result: NativeGeocoderReverseResult[]) => {
-          // console.log(JSON.stringify(result))
           this.cidade = result[0]["subAdministrativeArea"];
-          // console.log("cidade", this.cidade);
           this.getCurrentWeather(this.cidade)
         })
       .catch((error: any) => console.log(error));
@@ -87,7 +85,7 @@ export class MainProvider {
             data['wind'].speed
           )
           this.feedbackWeather.emit(true);
-          // console.log("temp",this.meteorologia)
+          console.log("temp", data)
         },
         (error) => {
           this.feedbackWeather.emit(false);
@@ -104,6 +102,7 @@ export class MainProvider {
   }
 
   saveLocal() {
+    this.dadosEntrada.areaPlantada = parseInt(this.dadosEntrada.areaPlantada)
     this.dadosEntrada.cidade = this.cidade;
     this.dadosEntrada.latitude = this.latitudeRadianos(this.coordinates.latitude);
     this.dadosEntrada.longitude = this.coordinates.longitude;
@@ -253,10 +252,12 @@ export class MainProvider {
     let valor = this.evapotranspiracao.evapotranspiracaoReferencia * this.evapotranspiracao.kc;
     this.evapotranspiracao.evapotranspiracaoCulturaDia = valor;
     this.getEvapotranspiracaoCulturaMes();
+    this.evapotranspiracao.etc = this.evapotranspiracao.evapotranspiracaoCulturaDia * this.local.areaPlantada
   }
 
   getEvapotranspiracaoCulturaMes() {
     //Verificar Formula
+    console.log(this.evapotranspiracao.etc)
     let culturaDia = this.evapotranspiracao.evapotranspiracaoCulturaDia;
     let valor = culturaDia * 30;
     valor = valor - 0.11

@@ -39,18 +39,18 @@
         </ion-row>
 
         <ion-row>
-          <ion-col col-4 class="param-met flex-container-center">
+          <ion-col col class="param-met flex-container-center">
             <img src="assets/weather_icons/014-drop.svg" alt="" srcset="">
             <h4>{{mainProvider.meteorologia.humidity}}%</h4>
           </ion-col>
-          <ion-col col-4 class="param-met flex-container-center">
+          <ion-col col class="param-met flex-container-center">
             <img src="assets/weather_icons/013-wind.svg" alt="" srcset="">
             <h4>{{mainProvider.meteorologia.wind}} m/s</h4>
           </ion-col>
-          <ion-col col-4 class="param-met flex-container-center">
+          <!-- <ion-col col-4 class="param-met flex-container-center">
             <img src="assets/weather_icons/007-rain.svg" alt="" srcset="">
             <h4>{{mainProvider.meteorologia.precipitation}}%</h4>
-          </ion-col>
+          </ion-col> -->
         </ion-row>
       </ion-grid>
     </ion-card-content>
@@ -58,14 +58,13 @@
 
   <ion-card>
     <ion-card-header>
-      ETC (mm/Dia)
+      Volume a ser irrigado hoje
     </ion-card-header>
     <ion-card-content class="etc">
       <ion-grid>
         <ion-row>
           <ion-col col-12 class="flex-container-center">
-            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">{{mainProvider.evapotranspiracao.evapotranspiracaoCulturaDia
-              | number:'1.3-3'}}mm</h2>
+            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">{{mainProvider.evapotranspiracao.evapotranspiracaoCulturaDia * mainProvider.local.areaPlantada}}mm</h2>
             <h5 class="no-perfil" *ngIf="!this.mainProvider.isLocal">Não existe perfil cadastrado</h5>
           </ion-col>
         </ion-row>
@@ -75,14 +74,13 @@
 
   <ion-card>
     <ion-card-header>
-      ETC (mm/Mês)
+      Cultura
     </ion-card-header>
     <ion-card-content class="etc">
       <ion-grid>
         <ion-row>
           <ion-col col-12 class="flex-container-center">
-            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">{{mainProvider.evapotranspiracao.evapotranspiracaoCulturaMes
-              | number:'1.3-3'}}mm</h2>
+            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">Milho</h2>
             <h5 class="no-perfil" *ngIf="!this.mainProvider.isLocal">Não existe perfil cadastrado</h5>
           </ion-col>
         </ion-row>
@@ -91,6 +89,22 @@
   </ion-card>
 
   <ion-card>
+    <ion-card-header>
+      Área Plantada
+    </ion-card-header>
+    <ion-card-content class="etc">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 class="flex-container-center">
+            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">3000 m²</h2>
+            <h5 class="no-perfil" *ngIf="!this.mainProvider.isLocal">Não existe perfil cadastrado</h5>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-card>
     <ion-card-header>
       Irrigação
     </ion-card-header>
@@ -121,7 +135,6 @@
         </button>
       </div>
     </ion-card-content>
-
-  </ion-card>
+  </ion-card> -->
 
 </ion-content>

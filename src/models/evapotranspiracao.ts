@@ -8,6 +8,7 @@ export class Evapotranspiracao {
     evapotranspiracaoCulturaMes: number;
     balanco: number;
     kc: number;
+    etc: number;
 
     constructor() { }
 
