@@ -9,6 +9,7 @@ export class DataLocal {
     patm: number;
     constante_psicometrica: number;
     coeficienteCulturaID: any;
+    coeficienteCulturaNome: any;
     coeficienteCultura: number;
     areaPlantada: any = null;
 

@@ -33,12 +33,22 @@ export class MainProvider {
 
   @Output() feedbackGeoLocation = new EventEmitter();
   @Output() feedbackWeather = new EventEmitter();
+  @Output() feedbackEvapotranspiracao = new EventEmitter();
 
 
   constructor(public http: HttpClient, private geolocation: Geolocation, public events: Events, private nativeGeocoder: NativeGeocoder, private storage: Storage) {
     this.getCoefCultura();
     this.getGeolocation();
     this.recuperar();
+    this.feedbackWeather.subscribe(
+      (data) => {
+        if(data == true) {
+          this.startFormulas();
+        }else {
+          console.log("Feed Wether", data)
+        }
+        
+      })
   }
 
   getGeolocation() {
@@ -61,7 +71,6 @@ export class MainProvider {
       useLocale: true,
       maxResults: 5
     };
-
     this.nativeGeocoder.reverseGeocode(lat, long, options)
       .then(
         (result: NativeGeocoderReverseResult[]) => {
@@ -111,9 +120,10 @@ export class MainProvider {
     } else {
       this.dadosEntrada.altitude = 30.00;
     }
-    this.storage.set('local', this.dadosEntrada);
     this.dadosEntrada.calcPatm();
     this.dadosEntrada.calcConstantePsicometrica();
+    this.storage.set('local', this.dadosEntrada);
+
     // this.recuperar();
     console.log(this.dadosEntrada)
   }
@@ -128,7 +138,6 @@ export class MainProvider {
         this.isLocal = true;
         this.local = val;
         console.log("local", val)
-        this.getDistanciaSolLua();
       }
     });
   }
@@ -142,6 +151,10 @@ export class MainProvider {
     let valor = latitude * Math.PI;
     valor = valor / 180;
     return valor;
+  }
+
+  startFormulas() {
+    this.getDistanciaSolLua();
   }
 
 
@@ -186,18 +199,17 @@ export class MainProvider {
 
   getSsup() {
     let valor = 0.19 * this.radiacao_solar.radiacaoSolarTop;
-    let raiz = Math.sqrt((this.meteorologia.temp_max) - (this.meteorologia.temp_min))
+    let raiz = Math.sqrt((this.meteorologia.temp_max) - (this.meteorologia.temp_min)) //fica 0 pq as vezes é a mesma temperatura
     valor = valor * raiz;
-    console.log(this.meteorologia.temp_max)
     this.radiacao_solar.radiacaoSolarSup = valor;
     this.getRadiacaoLiquida();
   }
 
   getRadiacaoLiquida() {
-    let valor = 1 - this.local.albedo
+    let valor = 1.00 - this.local.albedo
     valor = valor * this.radiacao_solar.radiacaoSolarSup;
     this.radiacao_solar.radiacaoSolarLiquida = valor;
-    // console.log(this.radiacao_solar)
+    console.log("getRadiacaoLiquida:",valor)
     this.getDelta();
   }
 
@@ -252,7 +264,7 @@ export class MainProvider {
     let valor = this.evapotranspiracao.evapotranspiracaoReferencia * this.evapotranspiracao.kc;
     this.evapotranspiracao.evapotranspiracaoCulturaDia = valor;
     this.getEvapotranspiracaoCulturaMes();
-    this.evapotranspiracao.etc = this.evapotranspiracao.evapotranspiracaoCulturaDia * this.local.areaPlantada
+    this.feedbackEvapotranspiracao.emit(true)
   }
 
   getEvapotranspiracaoCulturaMes() {

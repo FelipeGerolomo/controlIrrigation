@@ -12,16 +12,21 @@ export class HomePage {
   isGPS: any = false;
   isWeather: any = false;
   isError: any = false;
+  irrigar: any;
+  cultura: any;
+  areaPlantada: any;
 
 
   constructor(
     public navCtrl: NavController,
     public mainProvider: MainProvider,
   ) {
-    this.mainProvider.recuperar;
+    
   }
 
   ionViewDidLoad() {
+    console.log("home")
+    this.mainProvider.getGeolocation();
     this.mainProvider.feedbackGeoLocation.subscribe(data => {
       if (data) {
         this.isGPS = true;
@@ -37,6 +42,13 @@ export class HomePage {
       } else {
         this.isWeather = "error";
       }
+    })
+    this.mainProvider.feedbackEvapotranspiracao.subscribe((data) => {
+      this.irrigar = this.mainProvider.evapotranspiracao.evapotranspiracaoCulturaDia * this.mainProvider.local.areaPlantada;
+      this.irrigar = this.irrigar.toFixed(0);
+      this.cultura = this.mainProvider.local.coeficienteCulturaNome;
+      this.areaPlantada = this.mainProvider.local.areaPlantada;
+      console.log(this.irrigar)
     })
   }
 }

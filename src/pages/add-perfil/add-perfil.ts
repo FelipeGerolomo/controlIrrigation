@@ -31,6 +31,7 @@ export class AddPerfilPage {
   onChange(id) {
     for (let index = 0; index < this.mainProvider.kc.length; index++) {
       if (id == this.mainProvider.kc[index]["ID"]) {
+        this.mainProvider.dadosEntrada.coeficienteCulturaNome = this.mainProvider.kc[index]["Cultura"]
         this.mainProvider.dadosEntrada.coeficienteCultura = this.mainProvider.kc[index]["ESTAG4"]
       }
     }

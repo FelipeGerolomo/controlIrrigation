@@ -47,10 +47,6 @@
             <img src="assets/weather_icons/013-wind.svg" alt="" srcset="">
             <h4>{{mainProvider.meteorologia.wind}} m/s</h4>
           </ion-col>
-          <!-- <ion-col col-4 class="param-met flex-container-center">
-            <img src="assets/weather_icons/007-rain.svg" alt="" srcset="">
-            <h4>{{mainProvider.meteorologia.precipitation}}%</h4>
-          </ion-col> -->
         </ion-row>
       </ion-grid>
     </ion-card-content>
@@ -64,7 +60,7 @@
       <ion-grid>
         <ion-row>
           <ion-col col-12 class="flex-container-center">
-            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">{{mainProvider.evapotranspiracao.evapotranspiracaoCulturaDia * mainProvider.local.areaPlantada}}mm</h2>
+            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">{{irrigar}}mm</h2>
             <h5 class="no-perfil" *ngIf="!this.mainProvider.isLocal">Não existe perfil cadastrado</h5>
           </ion-col>
         </ion-row>
@@ -80,7 +76,7 @@
       <ion-grid>
         <ion-row>
           <ion-col col-12 class="flex-container-center">
-            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">Milho</h2>
+            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">{{cultura}}</h2>
             <h5 class="no-perfil" *ngIf="!this.mainProvider.isLocal">Não existe perfil cadastrado</h5>
           </ion-col>
         </ion-row>
@@ -96,7 +92,7 @@
       <ion-grid>
         <ion-row>
           <ion-col col-12 class="flex-container-center">
-            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">3000 m²</h2>
+            <h2 class="temperatura" *ngIf="this.mainProvider.isLocal">{{areaPlantada}} m²</h2>
             <h5 class="no-perfil" *ngIf="!this.mainProvider.isLocal">Não existe perfil cadastrado</h5>
           </ion-col>
         </ion-row>
